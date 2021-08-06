@@ -1,0 +1,77 @@
+[06-Aug-2021 15:35:13 Europe/Moscow] Uncaught exception: 'Exception' with message 'No route matched.'
+Stack trace: #0 C:\OSPanel\domains\httpserviceapi\public\index.php(34): Core\Router->dispatch('css/bootstrap.m...')
+#1 {main}
+Thrown in 'C:\OSPanel\domains\httpserviceapi\Core\Router.php' on line 119
+[06-Aug-2021 15:35:15 Europe/Moscow] Uncaught exception: 'Exception' with message 'No route matched.'
+Stack trace: #0 C:\OSPanel\domains\httpserviceapi\public\index.php(34): Core\Router->dispatch('css/bootstrap.m...')
+#1 {main}
+Thrown in 'C:\OSPanel\domains\httpserviceapi\Core\Router.php' on line 119
+[06-Aug-2021 15:46:43 Europe/Moscow] Uncaught exception: 'Exception' with message 'Controller class App\Controllers\Post not found'
+Stack trace: #0 C:\OSPanel\domains\httpserviceapi\public\index.php(34): Core\Router->dispatch('post/add')
+#1 {main}
+Thrown in 'C:\OSPanel\domains\httpserviceapi\Core\Router.php' on line 116
+[06-Aug-2021 15:46:47 Europe/Moscow] Uncaught exception: 'Exception' with message 'No route matched.'
+Stack trace: #0 C:\OSPanel\domains\httpserviceapi\public\index.php(34): Core\Router->dispatch('post/add/')
+#1 {main}
+Thrown in 'C:\OSPanel\domains\httpserviceapi\Core\Router.php' on line 119
+[06-Aug-2021 15:47:02 Europe/Moscow] Uncaught exception: 'Exception' with message 'Controller class App\Controllers\Post not found'
+Stack trace: #0 C:\OSPanel\domains\httpserviceapi\public\index.php(34): Core\Router->dispatch('post/addNew')
+#1 {main}
+Thrown in 'C:\OSPanel\domains\httpserviceapi\Core\Router.php' on line 116
+[06-Aug-2021 15:47:07 Europe/Moscow] Uncaught exception: 'Exception' with message 'No route matched.'
+Stack trace: #0 C:\OSPanel\domains\httpserviceapi\public\index.php(34): Core\Router->dispatch('post/addNew/')
+#1 {main}
+Thrown in 'C:\OSPanel\domains\httpserviceapi\Core\Router.php' on line 119
+[06-Aug-2021 16:01:22 Europe/Moscow] Uncaught exception: 'Exception' with message 'No route matched.'
+Stack trace: #0 C:\OSPanel\domains\httpserviceapi\public\index.php(34): Core\Router->dispatch('products/')
+#1 {main}
+Thrown in 'C:\OSPanel\domains\httpserviceapi\Core\Router.php' on line 119
+[06-Aug-2021 16:01:32 Europe/Moscow] Uncaught exception: 'Exception' with message 'No route matched.'
+Stack trace: #0 C:\OSPanel\domains\httpserviceapi\public\index.php(34): Core\Router->dispatch('products/index/')
+#1 {main}
+Thrown in 'C:\OSPanel\domains\httpserviceapi\Core\Router.php' on line 119
+[06-Aug-2021 16:12:49 Europe/Moscow] Uncaught exception: 'ErrorException' with message 'Undefined property: App\Models\Product::$name'
+Stack trace: #0 C:\OSPanel\domains\httpserviceapi\App\Models\Product.php(25): Core\Error::errorHandler(8, 'Undefined prope...', 'C:\\OSPanel\\doma...', 25, Array)
+#1 C:\OSPanel\domains\httpserviceapi\App\Models\Product.php(64): App\Models\Product->validate()
+#2 C:\OSPanel\domains\httpserviceapi\App\Controllers\Products.php(25): App\Models\Product->save()
+#3 [internal function]: App\Controllers\Products->addAction()
+#4 C:\OSPanel\domains\httpserviceapi\Core\Controller.php(17): call_user_func_array(Array, Array)
+#5 C:\OSPanel\domains\httpserviceapi\Core\Router.php(110): Core\Controller->__call('add', Array)
+#6 C:\OSPanel\domains\httpserviceapi\public\index.php(34): Core\Router->dispatch('products/add')
+#7 {main}
+Thrown in 'C:\OSPanel\domains\httpserviceapi\App\Models\Product.php' on line 25
+[06-Aug-2021 16:13:12 Europe/Moscow] Uncaught exception: 'ErrorException' with message 'Undefined property: App\Models\Product::$name'
+Stack trace: #0 C:\OSPanel\domains\httpserviceapi\App\Models\Product.php(25): Core\Error::errorHandler(8, 'Undefined prope...', 'C:\\OSPanel\\doma...', 25, Array)
+#1 C:\OSPanel\domains\httpserviceapi\App\Models\Product.php(64): App\Models\Product->validate()
+#2 C:\OSPanel\domains\httpserviceapi\App\Controllers\Products.php(25): App\Models\Product->save()
+#3 [internal function]: App\Controllers\Products->addAction()
+#4 C:\OSPanel\domains\httpserviceapi\Core\Controller.php(17): call_user_func_array(Array, Array)
+#5 C:\OSPanel\domains\httpserviceapi\Core\Router.php(110): Core\Controller->__call('add', Array)
+#6 C:\OSPanel\domains\httpserviceapi\public\index.php(34): Core\Router->dispatch('products/add')
+#7 {main}
+Thrown in 'C:\OSPanel\domains\httpserviceapi\App\Models\Product.php' on line 25
+[06-Aug-2021 16:13:14 Europe/Moscow] Uncaught exception: 'Error' with message 'Class 'App\Models\Post' not found'
+Stack trace: #0 [internal function]: App\Controllers\Posts->indexAction()
+#1 C:\OSPanel\domains\httpserviceapi\Core\Controller.php(17): call_user_func_array(Array, Array)
+#2 C:\OSPanel\domains\httpserviceapi\Core\Router.php(110): Core\Controller->__call('index', Array)
+#3 C:\OSPanel\domains\httpserviceapi\public\index.php(34): Core\Router->dispatch('posts/index')
+#4 {main}
+Thrown in 'C:\OSPanel\domains\httpserviceapi\App\Controllers\Posts.php' on line 14
+[06-Aug-2021 16:13:20 Europe/Moscow] Uncaught exception: 'ErrorException' with message 'Undefined property: App\Models\Product::$name'
+Stack trace: #0 C:\OSPanel\domains\httpserviceapi\App\Models\Product.php(25): Core\Error::errorHandler(8, 'Undefined prope...', 'C:\\OSPanel\\doma...', 25, Array)
+#1 C:\OSPanel\domains\httpserviceapi\App\Models\Product.php(64): App\Models\Product->validate()
+#2 C:\OSPanel\domains\httpserviceapi\App\Controllers\Products.php(25): App\Models\Product->save()
+#3 [internal function]: App\Controllers\Products->addAction()
+#4 C:\OSPanel\domains\httpserviceapi\Core\Controller.php(17): call_user_func_array(Array, Array)
+#5 C:\OSPanel\domains\httpserviceapi\Core\Router.php(110): Core\Controller->__call('add', Array)
+#6 C:\OSPanel\domains\httpserviceapi\public\index.php(34): Core\Router->dispatch('products/add')
+#7 {main}
+Thrown in 'C:\OSPanel\domains\httpserviceapi\App\Models\Product.php' on line 25
+[06-Aug-2021 16:18:44 Europe/Moscow] Uncaught exception: 'ErrorException' with message 'Undefined variable: products'
+Stack trace: #0 C:\OSPanel\domains\httpserviceapi\App\Controllers\Products.php(22): Core\Error::errorHandler(8, 'Undefined varia...', 'C:\\OSPanel\\doma...', 22, Array)
+#1 [internal function]: App\Controllers\Products->newAction()
+#2 C:\OSPanel\domains\httpserviceapi\Core\Controller.php(17): call_user_func_array(Array, Array)
+#3 C:\OSPanel\domains\httpserviceapi\Core\Router.php(110): Core\Controller->__call('new', Array)
+#4 C:\OSPanel\domains\httpserviceapi\public\index.php(34): Core\Router->dispatch('products/new')
+#5 {main}
+Thrown in 'C:\OSPanel\domains\httpserviceapi\App\Controllers\Products.php' on line 22

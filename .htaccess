@@ -1,0 +1,9 @@
+#устанавливаем кодировку
+AddDefaultCharset utf-8
+
+#включаем механизм перенаправлений
+RewriteEngine On
+
+#пишем нужное нам правило, перенаправляем все запросы на папку public
+RewriteRule ^$ public/ [L]
+RewriteRule (.*) public/$1 [L]
