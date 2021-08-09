@@ -33,4 +33,12 @@ class Helper
         header('Location: ' . Config::PROTOKOL . $_SERVER['HTTP_HOST'] . $url, true, 303);
         exit;
     }
+    public static function security($data)
+    {
+        return trim(strip_tags($data));
+    }
+    public static function createSession($sessionName, $sessionValue)
+    {
+        $_SESSION[$sessionName] = $sessionValue;
+    }
 }

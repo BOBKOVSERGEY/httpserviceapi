@@ -3,7 +3,9 @@
 
 namespace App\Models;
 
+use Core\Helper;
 use Core\Model;
+use DateTime;
 use PDO;
 use PDOException;
 
@@ -14,8 +16,7 @@ class Product extends Model
     public function __construct($data = [])
     {
         foreach ($data as $key => $value) {
-            $this->$key = $value;
-
+            $this->$key = Helper::security($value);
         }
     }
 
@@ -23,37 +24,27 @@ class Product extends Model
     {
         // check name
         if ($this->name == '') {
-            $this->errors[] = 'Name is required';
+            $this->errors['name'] = 'Поле Название обязательно для заполнения';
         }
-
-        // check address
-        if (filter_var($this->email, FILTER_VALIDATE_EMAIL) === false) {
-            $this->errors[] = 'Invalid email';
+        if(!static::validateDate($this->date)) {
+            $this->errors['date'] = 'Не корректно заполнена дата';
         }
-
-        if (static::emailExists($this->email, $this->id ?? null)) {
-            $this->errors[] = 'Email already taken';
+        if ($this->price == '') {
+            $this->errors['price'] = 'Поле Цена обязательно для заполнения';
+        } else if (!is_numeric($this->price)) {
+            $this->errors['price'] = 'Поле Цена должно быть числом';
         }
+    }
 
-        // check password
-        /*if ($this->password != $this->password_confirmation) {
-            $this->errors[] = 'Password must match confirmation';
-        }*/
-        if (isset($this->password)) {
-
-            if (strlen($this->password) < 6) {
-                $this->errors[] = 'Please enter at least 6 characters for the password';
-            }
-
-            if (preg_match('/.*[a-zA-Z]+.*/i', $this->password) == 0) {
-                $this->errors[] = 'Password needs at least one latin letter';
-            }
-
-            if (preg_match('/.*\d+.*/i', $this->password) == 0) {
-                $this->errors[] = 'Password needs at least one number';
-            }
-
-        }
+    /**
+     * @param $date
+     * @param string $format
+     * @return bool
+     */
+    public static function validateDate($date, $format = 'd.m.Y H:i:s')
+    {
+        $d = DateTime::createFromFormat($format, $date);
+        return $d && $d->format($format) == $date;
     }
 
     /**
@@ -63,25 +54,22 @@ class Product extends Model
     {
         $this->validate();
 
+
         if (empty($this->errors)) {
-            $password_hash = password_hash($this->password, PASSWORD_DEFAULT);
 
-            $token = new Token();
-            $hashed_token = $token->getHash();
-            $this->activation_token = $token->getValue();
+            $this->date = date('Y-m-d H:i:s', strtotime($this->date));
+            $this->price = number_format($this->price, 2, '.', ' ');
 
-            $sql = 'INSERT INTO users (name, email, password_hash, activation_hash)
-                VALUES (:name, :email, :password_hash, :activation_hash)';
+            $sql = 'INSERT INTO PRODUCTS (NAME, PRICE, DATE)
+                VALUES (:name, :price, :date)';
 
             $db = static::getDB();
 
             $stmt = $db->prepare($sql);
-
+            //Helper::debugVD($this->data, 1);
             $stmt->bindValue(':name', $this->name, PDO::PARAM_STR);
-            $stmt->bindValue(':email', $this->email, PDO::PARAM_STR);
-            $stmt->bindValue(':password_hash', $password_hash, PDO::PARAM_STR);
-            $stmt->bindValue(':activation_hash', $hashed_token, PDO::PARAM_STR);
-
+            $stmt->bindValue(':price', $this->price, PDO::PARAM_STR);
+            $stmt->bindValue(':date', $this->date, PDO::PARAM_STR);
             return $stmt->execute();
         }
 

@@ -31,6 +31,14 @@
     </div>
   </nav>
   <div class="container">
+
+    {% for message in flash_messages %}
+    <div class="alert alert-{{ message.type }} alert-dismissible fade show" role="alert">
+      {{ message.body }}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endfor %}
+
     {% block body %}
     {% endblock %}
   </div>

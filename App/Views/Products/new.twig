@@ -1,0 +1,50 @@
+
+{% extends "base.php" %}
+{% block title %}New Products{% endblock %}
+
+{% block body %}
+<h1 class="my-5">New Products</h1>
+
+<form class="row g-3 needs-validation" novalidate action="/products/new" method="post">
+  <input type="hidden" name="nocsrf" value="{{ session.token }}">
+  <div class="col-md-4 position-relative">
+    <label for="validationTooltip01" class="form-label">Укажите название товара</label>
+    <input type="text" class="form-control" id="validationTooltip01" name="name" placeholder="Баунти" value="{{ product.name }}" required>
+    <div class="invalid-feedback">
+      Поле название обязательно для заполнения
+    </div>
+    {% if product.errors.name is not empty %}
+      <div class="text-danger">
+        {{ product.errors.name }}
+      </div>
+    {% endif %}
+  </div>
+  <div class="col-md-4 position-relative">
+    <label for="validationTooltip02" class="form-label">Укажите цену товара</label>
+    <input type="text" class="form-control" name="price" id="validationTooltip02" placeholder="10.00" value="{{ product.price }}" required>
+    <div class="invalid-feedback">
+     Поле цена обязательно для заполнения
+    </div>
+    {% if product.errors.price is not empty %}
+      <div class="text-danger">
+        {{ product.errors.price }}
+      </div>
+    {% endif %}
+  </div>
+  <div class="col-md-4 position-relative">
+    <label for="validationTooltip02" class="form-label">Укажите дату и время</label>
+    <input type="text" name="date" class="form-control" id="validationTooltip03" placeholder="09.08.2021 16:41:23" value="{{ product.date }}"  required>
+    <div class="invalid-feedback">
+      Поле дата и время обязательно для заполнения
+    </div>
+    {% if product.errors.date is not empty %}
+      <div class="text-danger">
+        {{ product.errors.date }}
+      </div>
+    {% endif %}
+  </div>
+  <div class="col-12 mt-5">
+    <button class="btn btn-primary" type="submit">Create Product</button>
+  </div>
+</form>
+{% endblock %}

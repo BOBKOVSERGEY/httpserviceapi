@@ -16,6 +16,17 @@ error_reporting(E_ALL);
 set_error_handler('Core\Error::errorHandler');
 set_exception_handler('Core\Error::exceptionHandler');
 
+/**
+ * Sessions
+ */
+session_start();
+$cstrong = True;
+$token = bin2hex(openssl_random_pseudo_bytes(64, $cstrong));
+//var_dump($token);
+
+if (!isset($_SESSION['token'])) {
+    $_SESSION['token'] = $token;
+}
 
 $router = new \Core\Router();
 

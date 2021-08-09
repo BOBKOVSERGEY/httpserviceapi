@@ -39,5 +39,9 @@ class Config
      *
      */
     const SHOW_ERRORS = true;
+    const PROTOKOL = 'http://';
+    //public $secretKey = bin2hex(openssl_random_pseudo_bytes(64, 'True'));
+
+
 
 }
