@@ -9,6 +9,7 @@
   <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
+
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
       <a class="navbar-brand" href="/">TEST API</a>
@@ -30,7 +31,7 @@
       </div>
     </div>
   </nav>
-  <div class="container">
+  <div class="container pb-5">
 
     {% for message in flash_messages %}
     <div class="alert alert-{{ message.type }} alert-dismissible fade show" role="alert">

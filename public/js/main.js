@@ -46,14 +46,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     let elInputDateTime = document.querySelector('#validationTooltip03');
-        console.log(elInputDateTime)
     if(elInputDateTime) {
         elInputDateTime.addEventListener('click', function () {
             let currentTime = getDateTime();
             elInputDateTime.value = currentTime;
-        
         });
     }
-    
 
 });

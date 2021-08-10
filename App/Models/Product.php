@@ -22,6 +22,9 @@ class Product extends Model
 
     public function validate()
     {
+        if ($this->nocsrf != $_SESSION['token']) {
+            $this->errors['nocsrf'] = 'Invalid token!';
+        }
         // check name
         if ($this->name == '') {
             $this->errors['name'] = 'Поле Название обязательно для заполнения';
@@ -58,7 +61,7 @@ class Product extends Model
         if (empty($this->errors)) {
 
             $this->date = date('Y-m-d H:i:s', strtotime($this->date));
-            $this->price = number_format($this->price, 2, '.', ' ');
+            $this->price = number_format($this->price, 2, '.', '');
 
             $sql = 'INSERT INTO PRODUCTS (NAME, PRICE, DATE)
                 VALUES (:name, :price, :date)';
@@ -82,11 +85,11 @@ class Product extends Model
      *
      * @return array
      */
-    public static function getAll()
+    public static function getAll(): array
     {
         try {
             $db = static::getDB();
-            $stmt = $db->query('SELECT NAME, PRICE, DATE FROM PRODUCTS ORDER BY DATE');
+            $stmt = $db->query('SELECT NAME, PRICE, DATE FROM PRODUCTS ORDER BY DATE DESC');
             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
             return $results;
 
