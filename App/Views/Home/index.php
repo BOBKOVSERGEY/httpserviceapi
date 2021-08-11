@@ -3,7 +3,7 @@
 
 {% block body %}
 <h1 class="mt-3">Products</h1>
-
+  <div class="alert__display"></div>
   <table class="table table-striped table-hover my-5">
     <thead>
       <tr>
@@ -56,6 +56,8 @@
             alertErrorName: document.querySelector('.error-name'),
             alertErrorPrice: document.querySelector('.error-price'),
             alertErrorDate: document.querySelector('.error-date'),
+            alertDisplay: document.querySelector('.alert__display'),
+            alert: document.querySelector('.alert'),
         };
         async function getPosts() {
             try {
@@ -107,6 +109,11 @@
                     elements.alertErrorName.innerHTML = '';
                     elements.alertErrorPrice.innerHTML = '';
                     elements.alertErrorDate.innerHTML = '';
+                    elements.alertDisplay.innerHTML = '';
+                    elements.alertDisplay.innerHTML = `<div class="alert alert-success alert-dismissible fade show" role="alert">
+                                                      Товар успешно добавлен
+                                                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                                    </div>`;
                 }
                 if(result.error) {
                     console.log(result.error);
